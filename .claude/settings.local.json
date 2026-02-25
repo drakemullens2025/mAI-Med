@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__stack-auth__get_stack_auth_setup_instructions",
+      "WebSearch",
+      "mcp__stack-auth__search_docs",
+      "mcp__stack-auth__fetch",
+      "mcp__stack-auth__list_available_docs",
+      "mcp__stack-auth__get_docs_by_id",
+      "Bash(cd /c/Users/drake/projects/ubermedicine && npx create-next-app@latest . --typescript --tailwind --eslint --app --use-npm --no-src-dir --import-alias \"@/*\" 2>&1)",
+      "Bash(cd \"C:/Users/drake/projects/ubermedicine\" && npx create-next-app@latest . --typescript --tailwind --eslint --app --use-npm --no-src-dir --import-alias \"@/*\" 2>&1)",
+      "Bash(dir:*)",
+      "Bash(true:*)",
+      "Bash(head:*)",
+      "Bash(npx:*)",
+      "Bash(mkdir:*)",
+      "Bash(tail:*)",
+      "Bash(cd:*)"
+    ]
+  }
+}
