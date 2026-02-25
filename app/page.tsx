@@ -21,7 +21,7 @@ export default async function Home() {
           alt="mAcI med"
           fill
           priority
-          className="object-cover"
+          className="object-contain sm:object-cover"
         />
 
         {/* Nav buttons */}
