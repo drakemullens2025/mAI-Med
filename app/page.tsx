@@ -16,12 +16,20 @@ export default async function Home() {
     <div>
       {/* Hero — exactly one screen */}
       <div className="relative h-dvh">
+        {/* Mobile: portrait image, Desktop: landscape image */}
+        <Image
+          src="/macimedMOBILE.png"
+          alt="mAcI med"
+          fill
+          priority
+          className="object-cover sm:hidden"
+        />
         <Image
           src="/macimed.png"
           alt="mAcI med"
           fill
           priority
-          className="object-contain sm:object-cover"
+          className="hidden object-cover sm:block"
         />
 
         {/* Nav buttons */}
