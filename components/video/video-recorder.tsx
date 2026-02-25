@@ -21,6 +21,15 @@ export function VideoRecorder({ onRecorded }: VideoRecorderProps) {
   const [recordedUrl, setRecordedUrl] = useState<string | null>(null);
   const [error, setError] = useState("");
 
+  // Attach stream to video element whenever either changes
+  const videoCallbackRef = useCallback((el: HTMLVideoElement | null) => {
+    (videoRef as React.MutableRefObject<HTMLVideoElement | null>).current = el;
+    if (el && streamRef.current) {
+      el.srcObject = streamRef.current;
+      el.play().catch(() => {});
+    }
+  }, []);
+
   const startCamera = useCallback(async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -28,8 +37,10 @@ export function VideoRecorder({ onRecorded }: VideoRecorderProps) {
         audio: true,
       });
       streamRef.current = stream;
+      // If video element already exists, attach immediately
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
+        await videoRef.current.play();
       }
       setState("preview");
     } catch {
@@ -123,7 +134,7 @@ export function VideoRecorder({ onRecorded }: VideoRecorderProps) {
         )}
 
         {(state === "preview" || state === "recording") && (
-          <video ref={videoRef} autoPlay playsInline muted className="h-full w-full object-cover" />
+          <video ref={videoCallbackRef} autoPlay playsInline muted className="h-full w-full object-cover" />
         )}
 
         {state === "done" && recordedUrl && (
